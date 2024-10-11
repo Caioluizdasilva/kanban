@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         break;
                 }
 
+                // Prompt user for avatar selection
+                const avatarUrl = prompt('Enter the URL of your avatar (or press Enter to use a default):');
+                const defaultAvatar = 'assest/images/avatar.avif'; // Default avatar URL
+
                 const cardHTML = `
                     <div class="kanban-card" draggable="true">
                         <div class="badge ${badgeClass}">
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </p>
                             </div>
                             <div class="user">
-                                <img src="assest/images/avatar.avif" alt="Avatar">
+                                <img src="${avatarUrl || defaultAvatar}" alt="Avatar">
                             </div>
                         </div>
                         <button class="delete-card">Delete</button>
