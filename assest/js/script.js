@@ -5,10 +5,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const taskTitle = prompt('Enter the title of the new task:');
 
             if (taskTitle) {
+                // Prompt user for priority level
+                const priority = prompt('Select priority level: Low, Medium, or High.').toLowerCase();
+
+                // Determine the class and text for priority
+                let badgeClass = '';
+                let priorityText = '';
+
+                switch (priority) {
+                    case 'low':
+                        badgeClass = 'low';
+                        priorityText = 'Low priority';
+                        break;
+                    case 'high':
+                        badgeClass = 'high';
+                        priorityText = 'High priority';
+                        break;
+                    case 'medium':
+                    default:
+                        badgeClass = 'medium';
+                        priorityText = 'Medium priority';
+                        break;
+                }
+
                 const cardHTML = `
                     <div class="kanban-card" draggable="true">
-                        <div class="badge medium">
-                            <span>Medium priority</span>
+                        <div class="badge ${badgeClass}">
+                            <span>${priorityText}</span>
                         </div>
                         <p class="card-title">${taskTitle}</p>
                         <div class="card-infos">
