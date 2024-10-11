@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); /* Alternativa similar ao SF Pro */
+
+/* Estilo Global */
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F5F7; /* Cor de fundo neutra e clara, minimalista */
+    color: #1D1D1F; /* Cor de texto preto suave */
+}
+
+.kanban {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    width: 100%;
+    height: 90vh;
+    overflow-x: auto;
+    background-color: #FFFFFF; /* Branco limpo, típico do design Apple */
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.kanban-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: #F9F9F9; /* Fundo cinza claro */
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05); /* Sombra muito leve */
+    min-width: 250px;
+    overflow-y: auto;
+}
+
+.kanban-column::after {
+    position: absolute;
+    content: '';
+    height: 4px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 2px;
+}
+
+.kanban-column[data-id="1"]::after {
+    background-color: #FFD60A; /* Amarelo Apple */
+}
+
+.kanban-column[data-id="2"]::after {
+    background-color: #FF9500; /* Laranja Apple */
+}
+
+.kanban-column[data-id="3"]::after {
+    background-color: #34C759; /* Verde Apple */
+}
+
+.kanban-column[data-id="4"]::after {
+    background-color: #007AFF; /* Azul Apple */
+}
+
+.kanban-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1D1D1F; /* Preto escuro */
+}
+
+.add-card {
+    color: #007AFF; /* Azul vibrante para interações */
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.kanban-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.kanban-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05); /* Sombra muito leve */
+    transition: box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.kanban-card:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Efeito de hover sutil */
+}
+
+.badge {
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.badge.high {
+    background-color: #FF453A; /* Vermelho Apple */
+}
+
+.badge.medium {
+    background-color: #FFD60A; /* Amarelo vibrante */
+}
+
+.badge.low {
+    background-color: #32D74B; /* Verde Apple */
+}
+
+.card-infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.card-icons i {
+    color: #8E8E93; /* Cinza neutro */
+}
+
+.user img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.cards-hover {
+    background-color: #E5E5EA; /* Cinza suave ao arrastar */
+    border-radius: 8px;
+}
+
+/* Estilizando a barra de rolagem */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #E5E5EA; /* Cinza claro */
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #C7C7CC; /* Cinza mais escuro */
+    border-radius: 20px;
+}
