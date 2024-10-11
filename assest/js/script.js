@@ -35,4 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Função para adicionar evento de exclusão
+    function addDeleteEventListeners() {
+        document.querySelectorAll('.delete-card').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const card = event.target.closest('.kanban-card');
+                card.remove();
+            });
+        });
+    }
+
+
+    // Adicionar os eventos aos cards já existentes
+    addDeleteEventListeners();
+    addCommentListeners();
 });
