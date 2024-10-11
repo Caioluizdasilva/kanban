@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para adicionar nova tarefa
     document.querySelectorAll('.add-card').forEach(button => {
         button.addEventListener('click', (event) => {
             const column = event.target.closest('.kanban-column');
-            const taskTitle = prompt('Digite o título da nova tarefa:');
+            const taskTitle = prompt('Enter the title of the new task:');
 
             if (taskTitle) {
                 const cardHTML = `
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="assest/images/avatar.avif" alt="Avatar">
                             </div>
                         </div>
-                        <button class="delete-card">Excluir</button>
+                        <button class="delete-card">Delete</button>
                     </div>
                 `;
                 column.querySelector('.kanban-cards').innerHTML += cardHTML;
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para adicionar evento de exclusão
     function addDeleteEventListeners() {
         document.querySelectorAll('.delete-card').forEach(button => {
             button.addEventListener('click', (event) => {
@@ -45,20 +43,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para visualizar comentários
     function addCommentListeners() {
         document.querySelectorAll('.fa-comment').forEach(commentIcon => {
             commentIcon.addEventListener('click', (event) => {
                 const card = event.target.closest('.kanban-card');
-                const comment = prompt('Digite seu comentário:');
+                const comment = prompt('Enter your comment:');
                 if (comment) {
-                    alert(`Comentário adicionado: ${comment}`);
+                    alert(`Comment added: ${comment}`);
                 }
             });
         });
     }
 
-    // Adicionar os eventos aos cards já existentes
     addDeleteEventListeners();
     addCommentListeners();
+
+    document.querySelectorAll('.kanban-card').forEach(card => {
+        card.addEventListener('dragstart', e => {
+            e.currentTarget.classList.add('dragging');
+        });
+
+        card.addEventListener('dragend', e => {
+            e.currentTarget.classList.remove('dragging');
+        });
+    });
+
+    document.querySelectorAll('.kanban-cards').forEach(column => {
+        column.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.currentTarget.classList.add('cards-hover');
+        });
+
+        column.addEventListener('dragleave', e => {
+            e.currentTarget.classList.remove('cards-hover');
+        });
+
+        column.addEventListener('drop', e => {
+            e.currentTarget.classList.remove('cards-hover');
+            const dragCard = document.querySelector('.kanban-card.dragging');
+            e.currentTarget.appendChild(dragCard);
+        });
+    });
 });
