@@ -45,6 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Função para visualizar comentários
+    function addCommentListeners() {
+        document.querySelectorAll('.fa-comment').forEach(commentIcon => {
+            commentIcon.addEventListener('click', (event) => {
+                const card = event.target.closest('.kanban-card');
+                const comment = prompt('Digite seu comentário:');
+                if (comment) {
+                    alert(`Comentário adicionado: ${comment}`);
+                }
+            });
+        });
+    }
 
     // Adicionar os eventos aos cards já existentes
     addDeleteEventListeners();
