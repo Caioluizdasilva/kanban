@@ -26,4 +26,4 @@ This project is a simulation of a Kanban system that allows the client to track 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/repository-name.git
+   git clone https://github.com/Caioluizdasilva/kanban.git
